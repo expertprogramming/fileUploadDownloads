@@ -1,0 +1,6 @@
+Resources:
+  ApiGatewayRestApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: ${self:custom.env.Api.fileUploadDownloadsApiName}
+      Description: "Api to call file upload download lambda function"

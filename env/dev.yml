@@ -1,0 +1,19 @@
+Account:
+  AwsAcc: '<AWS Account Number>'
+
+Tags:
+  Owner: Naveen
+  Project: fileUploadDownloads
+
+Functions:
+  fileUploadDownloadsFunctionName: fileUploadDownloads-${self:provider.stage}
+
+Api:
+  fileUploadDownloadsApiName: fileUploadDownloadsAPI-${self:provider.stage}
+
+IamRole:
+  fileUploadDownloadsRoleName: fileUploadDownloadsRole-${self:provider.stage}
+  fileUploadDownloadsPolicyName: fileUploadDownloadsPolicy-${self:provider.stage}
+
+Buckets:
+  fileUploadDownloadsBucketName: fileuploaddownloadsdemobucket-${self:provider.stage}

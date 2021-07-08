@@ -1,0 +1,20 @@
+service: fileUploadDownloads-Role
+useDotenv: true
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  stackName: "fileUploadDownloadsRole-${opt:stage, 'dev'}"
+
+  stackTags:
+    Owner: ${self:custom.env.Tags.Owner}
+    Project: ${self:custom.env.Tags.Project}
+
+custom:
+  env: ${file(env/${self:provider.stage}.yml)}
+
+resources:
+  - ${file(resources/lambdarole.yml)}

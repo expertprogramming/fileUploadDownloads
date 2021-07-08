@@ -1,0 +1,33 @@
+service: fileUploadDownloads-Lambda
+useDotenv: true
+frameworkVersion: '2'
+
+package:
+  patterns:
+  - '!**/**'
+  - 'src/**'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  stackName: "fileUploadDownloads-Lambda-API-${opt:stage, 'dev'}"
+
+  apiGateway:
+    binaryMediaTypes:
+      - '*/*'
+
+  stackTags:
+    Owner: ${self:custom.env.Tags.Owner}
+    Project: ${self:custom.env.Tags.Project}
+
+custom:
+  env: ${file(env/${self:provider.stage}.yml)}
+
+functions:
+  - ${file(resources/function.yml)}
+
+resources:
+  - ${file(resources/apigatewayName.yml)}
+  - ${file(resources/s3bucket.yml)}

@@ -1,0 +1,20 @@
+fileuploadsdownloads:
+  handler: src/index.handler
+  name: ${self:custom.env.Functions.fileUploadDownloadsFunctionName}
+  role: 'arn:aws:iam::${self:custom.env.Account.AwsAcc}:role/${self:custom.env.IamRole.fileUploadDownloadsRoleName}'
+  tags:
+    Owner: ${self:custom.env.Tags.Owner}
+    Project: ${self:custom.env.Tags.Project}
+  environment:
+    bucketName: ${self:custom.env.Buckets.fileUploadDownloadsBucketName}
+  events:
+    - http:
+        method: post
+        path: fileupload
+    - http:
+        method: get
+        path: filedownload
+        request:
+          parameters:
+            querystrings:
+              filename: true
