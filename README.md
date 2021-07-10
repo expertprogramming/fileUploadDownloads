@@ -32,7 +32,7 @@ Also to download file using APIGateway and Lambda Function
 
 # Steps to download file 
 1. open below mentioned url in browser
-    https://rdqk8rswfj.execute-api.us-east-1.amazonaws.com/dev/filedownload?filename=<<Filename which is present in s3>>
+    https://rdqk8rswfj.execute-api.us-east-1.amazonaws.com/dev/filedownload?filename="filename>"
 2. pass the file name in <file name>
 3. hit enter it will start download
 
